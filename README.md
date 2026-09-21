@@ -7,6 +7,7 @@ i will be covering:
 4.keys and tokens
 5.aliases
 6.SSH
+7.GitActions
 
 History txt file will be placed and will hold the commands history.
 GOODLUCK
