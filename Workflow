@@ -1,0 +1,10 @@
+Code will be created and worked with at Local repository.
+Git will be initialized then files will be created, and commits
+will be applied.
+then subjects will be practiced with them files
+with different branches and different actions.
+eventually, Everything will be PUSHED into a bare
+repository in GITHUB.
+
+LINK/URL will be added to README.md
+EOF
