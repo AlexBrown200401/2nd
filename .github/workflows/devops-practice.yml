@@ -1,0 +1,56 @@
+name: DevOps Practice
+
+on:
+  workflow_dispatch:
+  
+   
+  push:
+     branches:
+       - main 
+    
+    
+  pull_request:
+    types: 
+      - opened
+      - synchronize
+      - reopened
+ 
+env:
+       APP_NAME: devops-training
+
+jobs:
+    build:
+        runs-on : ubuntu-24.04
+
+        outputs: 
+         version:  ${{ steps.generate.outputs.version }}
+
+        steps: 
+       
+         - id: generate
+           run: echo "version=1.0.0" >> "$GITHUB_OUTPUT"
+         
+
+        
+    test:
+       runs-on: ubuntu-24.04
+       needs: build
+         
+         
+       steps:
+         - run : 
+             echo " Testing ${{ env.APP_NAME }} version ${{ needs.build.outputs.version }} "
+
+    deploy:
+       runs-on : ubuntu-24.04
+       needs:
+         - build 
+         - test
+
+       steps: 
+         
+        - run:
+           echo " Deploying ${{ env.APP_NAME }} ${{ needs.build.outputs.version }} "
+
+       env: 
+         DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }} 
